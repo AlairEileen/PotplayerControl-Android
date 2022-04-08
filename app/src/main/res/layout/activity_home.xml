@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="controller"
+            type="space.alair.potplayer_control.pages.HomeActivity" />
+
+        <import type="space.alair.potplayer_control.presenters.PlayerCmdText" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".pages.HomeActivity">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/vTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vTop"
+            tools:text="已连接：1.1.1.157" />
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/ivSettings"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="2dp"
+            android:padding="2dp"
+            app:backgroundColor="#999999"
+            app:cornerAll="13dp"
+            app:layout_constraintBottom_toBottomOf="@id/actvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/actvTitle"
+            app:strokeLineColor="#777777"
+            app:strokeLineWidth="1dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="@id/ivSettings"
+            app:layout_constraintEnd_toEndOf="@id/ivSettings"
+            app:layout_constraintStart_toStartOf="@id/ivSettings"
+            app:layout_constraintTop_toTopOf="@id/ivSettings" />
+
+
+        <View
+            android:id="@+id/vTop"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivPrevious"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_marginBottom="30dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.PREVIOUS)}"
+            app:backgroundColor="#EEEEEE"
+            app:cornerAll="25dp"
+            app:layout_constraintBottom_toTopOf="@id/acivPlay"
+            app:layout_constraintStart_toStartOf="@id/acivForward"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_forward"
+            app:layout_constraintBottom_toBottomOf="@id/acivPrevious"
+            app:layout_constraintEnd_toEndOf="@id/acivPrevious"
+            app:layout_constraintStart_toStartOf="@id/acivPrevious"
+            app:layout_constraintTop_toTopOf="@id/acivPrevious" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivFullScreeen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.FULL_SCREEN)}"
+            app:backgroundColor="#FFFFFF"
+            app:cornerAll="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/acivPrevious"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_full_screen"
+            app:layout_constraintBottom_toBottomOf="@id/acivFullScreeen"
+            app:layout_constraintEnd_toEndOf="@id/acivFullScreeen"
+            app:layout_constraintStart_toStartOf="@id/acivFullScreeen"
+            app:layout_constraintTop_toTopOf="@id/acivFullScreeen" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivNext"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="18dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.REWIND)}"
+            android:padding="4dp"
+            app:backgroundColor="#EEEEEE"
+            app:cornerAll="25dp"
+            app:layout_constraintBottom_toBottomOf="@id/acivForward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="@id/acivNext"
+            app:layout_constraintEnd_toEndOf="@id/acivNext"
+            app:layout_constraintStart_toStartOf="@id/acivNext"
+            app:layout_constraintTop_toTopOf="@id/acivNext" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivForward"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="44dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.FORWARD)}"
+            android:paddingVertical="8dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="8dp"
+            app:backgroundColor="#EEEEEE"
+            app:cornerAll="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_previous"
+            app:layout_constraintBottom_toBottomOf="@id/acivForward"
+            app:layout_constraintEnd_toEndOf="@id/acivForward"
+            app:layout_constraintStart_toStartOf="@id/acivForward"
+            app:layout_constraintTop_toTopOf="@id/acivForward" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivRewind"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.NEXT)}"
+            android:paddingVertical="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="2dp"
+            app:backgroundColor="#EEEEEE"
+            app:cornerAll="25dp"
+            app:layout_constraintEnd_toEndOf="@id/acivNext"
+            app:layout_constraintTop_toTopOf="@id/acivPrevious"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_rewind"
+            app:layout_constraintBottom_toBottomOf="@id/acivRewind"
+            app:layout_constraintEnd_toEndOf="@id/acivRewind"
+            app:layout_constraintStart_toStartOf="@id/acivRewind"
+            app:layout_constraintTop_toTopOf="@id/acivRewind" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivPlay"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="30dp"
+            android:elevation="4dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.PAUSE)}"
+            app:backgroundColor="#EEEEEE"
+            app:cornerAll="100dp"
+            app:layout_constraintBottom_toTopOf="@id/acivForward"
+            app:layout_constraintCircleRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_play"
+            android:translationZ="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/acivPlay"
+            app:layout_constraintEnd_toEndOf="@id/acivPlay"
+            app:layout_constraintStart_toStartOf="@id/acivPlay"
+            app:layout_constraintTop_toTopOf="@id/acivPlay" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivVolumeDown"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.VOLUME_DOWN)}"
+            android:padding="6dp"
+            app:backgroundColor="#FFCC33"
+            app:cornerAll="25dp"
+            app:layout_constraintBottom_toBottomOf="@id/acivPlay"
+            app:layout_constraintStart_toStartOf="@id/acivPrevious"
+            app:layout_constraintTop_toTopOf="@id/acivPlay"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_volume_down"
+            app:layout_constraintBottom_toBottomOf="@id/acivVolumeDown"
+            app:layout_constraintEnd_toEndOf="@id/acivVolumeDown"
+            app:layout_constraintStart_toStartOf="@id/acivVolumeDown"
+            app:layout_constraintTop_toTopOf="@id/acivVolumeDown" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivMute"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.MUTE)}"
+            android:padding="6dp"
+            android:src="@drawable/ic_mute"
+            app:backgroundColor="#FFCCCC"
+            app:cornerAll="25dp"
+            app:layout_constraintBottom_toBottomOf="@id/acivForward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/acivForward"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_mute"
+            app:layout_constraintBottom_toBottomOf="@id/acivMute"
+            app:layout_constraintEnd_toEndOf="@id/acivMute"
+            app:layout_constraintStart_toStartOf="@id/acivMute"
+            app:layout_constraintTop_toTopOf="@id/acivMute" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivVolumeUp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.VOLUME_UP)}"
+            android:padding="7dp"
+            android:src="@drawable/ic_volume_up"
+            app:backgroundColor="#FF9933"
+            app:cornerAll="25dp"
+            app:layout_constraintEnd_toEndOf="@id/acivNext"
+            app:layout_constraintTop_toTopOf="@id/acivVolumeDown"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_volume_up"
+            app:layout_constraintBottom_toBottomOf="@id/acivVolumeUp"
+            app:layout_constraintEnd_toEndOf="@id/acivVolumeUp"
+            app:layout_constraintStart_toStartOf="@id/acivVolumeUp"
+            app:layout_constraintTop_toTopOf="@id/acivVolumeUp" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivPower"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="64dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.SHUTDOWN_PC)}"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/ic_power"
+            app:backgroundColor="#FF3300"
+            app:cornerAll="15dp"
+            app:layout_constraintBottom_toTopOf="@id/acivPrevious"
+            app:layout_constraintStart_toStartOf="@id/acivPrevious"
+            app:strokeLineColor="#660000"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_power"
+            app:layout_constraintBottom_toBottomOf="@id/acivPower"
+            app:layout_constraintEnd_toEndOf="@id/acivPower"
+            app:layout_constraintStart_toStartOf="@id/acivPower"
+            app:layout_constraintTop_toTopOf="@id/acivPower" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivRefresh"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.REFRESH)}"
+            android:padding="6dp"
+            app:backgroundColor="#00FFCC"
+            app:cornerAll="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/acivPower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/acivPower"
+            app:strokeLineColor="#CCCCCC"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_refresh"
+            app:layout_constraintBottom_toBottomOf="@id/acivRefresh"
+            app:layout_constraintEnd_toEndOf="@id/acivRefresh"
+            app:layout_constraintStart_toStartOf="@id/acivRefresh"
+            app:layout_constraintTop_toTopOf="@id/acivRefresh" />
+
+
+        <com.tistory.zladnrms.roundablelayout.RoundableLayout
+            android:id="@+id/acivClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:elevation="2dp"
+            android:onClick="@{()->controller.remotePresenter.sendMessage(PlayerCmdText.EXIT_PC)}"
+            android:padding="8dp"
+            app:backgroundColor="#FF9900"
+            app:cornerAll="15dp"
+            app:layout_constraintEnd_toEndOf="@id/acivNext"
+            app:layout_constraintTop_toTopOf="@id/acivPower"
+            app:strokeLineColor="#999900"
+            app:strokeLineWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="@id/acivClose"
+            app:layout_constraintEnd_toEndOf="@id/acivClose"
+            app:layout_constraintStart_toStartOf="@id/acivClose"
+            app:layout_constraintTop_toTopOf="@id/acivClose" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
